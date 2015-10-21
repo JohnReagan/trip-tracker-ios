@@ -34,6 +34,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qnj-JX-XC3">
                                         <rect key="frame" x="0.0" y="75" width="151" height="30"/>
                                         <state key="normal" title="Set Default Label Text"/>
+                                        <connections>
+                                            <action selector="setDefaultLabelText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dxy-bQ-trY"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -43,18 +46,30 @@
                                     <constraint firstItem="3DX-jQ-1M3" firstAttribute="leading" secondItem="bLh-60-BbG" secondAttribute="leading" id="uqK-FU-iBy"/>
                                 </constraints>
                             </stackView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PcE-5a-xhG">
+                                <rect key="frame" x="20" y="197" width="560" height="312"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="PcE-5a-xhG" secondAttribute="trailing" id="1Qq-R2-kwv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bLh-60-BbG" secondAttribute="trailing" id="7Aa-aO-mGv"/>
+                            <constraint firstItem="PcE-5a-xhG" firstAttribute="top" secondItem="bLh-60-BbG" secondAttribute="bottom" constant="12" id="Cwm-c0-MUH"/>
                             <constraint firstItem="bLh-60-BbG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="60" id="bVk-kl-zuI"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PcE-5a-xhG" secondAttribute="bottom" constant="91" id="bdF-Ss-Ny1"/>
+                            <constraint firstItem="PcE-5a-xhG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="doB-6h-8pn"/>
                             <constraint firstItem="bLh-60-BbG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="xye-UF-bK6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="PcE-5a-xhG" id="hMS-SI-MD3"/>
+                        <outlet property="nameTextField" destination="3DX-jQ-1M3" id="n5E-pz-9g9"/>
+                        <outlet property="tripNameLabel" destination="gPh-ys-3Vz" id="afz-Bt-F2j"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="305" y="354"/>
+            <point key="canvasLocation" x="-12" y="30"/>
         </scene>
     </scenes>
 </document>
