@@ -127,6 +127,9 @@ class TripTableViewController: UITableViewController {
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest)
             trips = results as! [NSManagedObject]
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         } 
