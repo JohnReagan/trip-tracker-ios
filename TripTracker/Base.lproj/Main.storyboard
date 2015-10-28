@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vKE-Wa-Lti">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Your Trips-->
+        <scene sceneID="C77-1Z-E2p">
+            <objects>
+                <tableViewController id="i0m-Kh-oev" customClass="TripTableViewController" customModule="TripTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="gQ1-K0-2bZ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TripTableViewCell" rowHeight="90" id="iUx-SR-Ci0" customClass="TripTableViewCell" customModule="TripTracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="90"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iUx-SR-Ci0" id="Wil-gp-mxR">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZp-QJ-9IZ">
+                                            <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q38-NH-kCa">
+                                            <rect key="frame" x="8" y="34" width="282" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="dZp-QJ-9IZ" id="rsp-kQ-V1Q"/>
+                                    <outlet property="ratingLabel" destination="Q38-NH-kCa" id="nya-m4-1de"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="i0m-Kh-oev" id="Cbz-WK-Fmg"/>
+                            <outlet property="delegate" destination="i0m-Kh-oev" id="pcE-Di-XdB"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Your Trips" id="V1M-8e-dCu">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="axV-jb-eLd">
+                            <connections>
+                                <segue destination="xB5-0l-arm" kind="presentation" identifier="AddItem" id="NmE-yu-nCv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o36-SQ-GOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="267" y="21"/>
+        </scene>
+        <!--New Trip-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="TripViewController" customModule="TripTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="bLh-60-BbG">
+                                <rect key="frame" x="20" y="80" width="560" height="30"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="560" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter trip name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3DX-jQ-1M3">
+                                        <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="3DX-jQ-1M3" secondAttribute="trailing" id="YpW-7S-wTK"/>
+                                    <constraint firstAttribute="trailing" secondItem="3DX-jQ-1M3" secondAttribute="trailing" id="bLS-gY-AFe"/>
+                                    <constraint firstItem="3DX-jQ-1M3" firstAttribute="leading" secondItem="bLh-60-BbG" secondAttribute="leading" id="pTP-Jh-Zaq"/>
+                                    <constraint firstItem="3DX-jQ-1M3" firstAttribute="leading" secondItem="bLh-60-BbG" secondAttribute="leading" id="uqK-FU-iBy"/>
+                                </constraints>
+                            </stackView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PcE-5a-xhG">
+                                <rect key="frame" x="20" y="197" width="560" height="312"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="PcE-5a-xhG" secondAttribute="trailing" id="1Qq-R2-kwv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bLh-60-BbG" secondAttribute="trailing" id="7Aa-aO-mGv"/>
+                            <constraint firstItem="PcE-5a-xhG" firstAttribute="top" secondItem="bLh-60-BbG" secondAttribute="bottom" constant="87" id="Cwm-c0-MUH"/>
+                            <constraint firstItem="bLh-60-BbG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="bVk-kl-zuI"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PcE-5a-xhG" secondAttribute="bottom" constant="91" id="bdF-Ss-Ny1"/>
+                            <constraint firstItem="PcE-5a-xhG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="doB-6h-8pn"/>
+                            <constraint firstItem="bLh-60-BbG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="xye-UF-bK6"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Trip" id="vIO-QQ-xQg">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="XaT-IB-05W">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="OK8-KY-EKA"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="1ah-Xy-AQZ">
+                            <connections>
+                                <segue destination="cfN-hl-qXP" kind="unwind" unwindAction="unwindToTripList:" id="UYE-f5-eP7"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="PcE-5a-xhG" id="hMS-SI-MD3"/>
+                        <outlet property="nameTextField" destination="3DX-jQ-1M3" id="n5E-pz-9g9"/>
+                        <outlet property="saveButton" destination="1ah-Xy-AQZ" id="O2A-1R-3QT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="cfN-hl-qXP" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1823" y="21"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="L3g-Th-tch">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vKE-Wa-Lti" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="URN-rp-jg8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="i0m-Kh-oev" kind="relationship" relationship="rootViewController" id="U6G-Dm-CeH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bI1-gP-sin" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-547" y="7"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="R3m-xr-5zI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xB5-0l-arm" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bd5-7F-KZM">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="yAI-Nw-aCE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pDD-IY-935" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1011" y="21"/>
+        </scene>
+    </scenes>
+</document>
