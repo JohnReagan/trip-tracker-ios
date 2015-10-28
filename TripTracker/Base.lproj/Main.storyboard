@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vKE-Wa-Lti">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -96,11 +97,10 @@
                             <constraint firstAttribute="trailingMargin" secondItem="bLh-60-BbG" secondAttribute="trailing" id="7Aa-aO-mGv"/>
                             <constraint firstItem="PcE-5a-xhG" firstAttribute="top" secondItem="bLh-60-BbG" secondAttribute="bottom" constant="87" id="Cwm-c0-MUH"/>
                             <constraint firstItem="bLh-60-BbG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="bVk-kl-zuI"/>
+
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PcE-5a-xhG" secondAttribute="bottom" constant="91" id="bdF-Ss-Ny1"/>
-                            <constraint firstItem="PcE-5a-xhG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="doB-6h-8pn"/>
-                            <constraint firstItem="bLh-60-BbG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="xye-UF-bK6"/>
-                        </constraints>
                     </view>
+
                     <navigationItem key="navigationItem" title="New Trip" id="vIO-QQ-xQg">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="XaT-IB-05W">
                             <connections>

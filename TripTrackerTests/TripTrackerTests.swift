@@ -11,7 +11,6 @@ import XCTest
 
 class TripTrackerTests: XCTestCase {
     
-    
     // MARK: TripTracker Tests
     
     func testTripInitialization() {

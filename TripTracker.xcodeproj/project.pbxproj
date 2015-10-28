@@ -8,15 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		372DC0E71BD6B07800D67933 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372DC0E61BD6B07800D67933 /* AppDelegate.swift */; };
+<<<<<<< HEAD
 		372DC0E91BD6B07800D67933 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372DC0E81BD6B07800D67933 /* TripViewController.swift */; };
+=======
+		372DC0E91BD6B07800D67933 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372DC0E81BD6B07800D67933 /* ViewController.swift */; };
+>>>>>>> ae315da1eea81304621303fd43898d5129cecfbf
 		372DC0EC1BD6B07800D67933 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372DC0EA1BD6B07800D67933 /* Main.storyboard */; };
 		372DC0EE1BD6B07800D67933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 372DC0ED1BD6B07800D67933 /* Assets.xcassets */; };
 		372DC0F11BD6B07800D67933 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 372DC0EF1BD6B07800D67933 /* LaunchScreen.storyboard */; };
 		372DC0FC1BD6B07900D67933 /* TripTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372DC0FB1BD6B07900D67933 /* TripTrackerTests.swift */; };
+<<<<<<< HEAD
 		37BCBFD41BE0F4EF002668B3 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BCBFD31BE0F4EF002668B3 /* Trip.swift */; };
 		37BCBFD51BE0F4EF002668B3 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BCBFD31BE0F4EF002668B3 /* Trip.swift */; };
 		37BCBFD71BE0FA84002668B3 /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BCBFD61BE0FA84002668B3 /* TripTableViewCell.swift */; };
 		37BCBFD91BE0FCAE002668B3 /* TripTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BCBFD81BE0FCAE002668B3 /* TripTableViewController.swift */; };
+=======
+>>>>>>> ae315da1eea81304621303fd43898d5129cecfbf
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +39,11 @@
 /* Begin PBXFileReference section */
 		372DC0E31BD6B07800D67933 /* TripTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		372DC0E61BD6B07800D67933 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		372DC0E81BD6B07800D67933 /* TripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
+=======
+		372DC0E81BD6B07800D67933 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+>>>>>>> ae315da1eea81304621303fd43898d5129cecfbf
 		372DC0EB1BD6B07800D67933 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		372DC0ED1BD6B07800D67933 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		372DC0F01BD6B07800D67933 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,9 +51,12 @@
 		372DC0F71BD6B07900D67933 /* TripTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TripTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		372DC0FB1BD6B07900D67933 /* TripTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripTrackerTests.swift; sourceTree = "<group>"; };
 		372DC0FD1BD6B07900D67933 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		37BCBFD31BE0F4EF002668B3 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		37BCBFD61BE0FA84002668B3 /* TripTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
 		37BCBFD81BE0FCAE002668B3 /* TripTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableViewController.swift; sourceTree = "<group>"; };
+=======
+>>>>>>> ae315da1eea81304621303fd43898d5129cecfbf
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,11 +99,16 @@
 			isa = PBXGroup;
 			children = (
 				372DC0E61BD6B07800D67933 /* AppDelegate.swift */,
+<<<<<<< HEAD
 				372DC0E81BD6B07800D67933 /* TripViewController.swift */,
 				372DC0EA1BD6B07800D67933 /* Main.storyboard */,
 				37BCBFD81BE0FCAE002668B3 /* TripTableViewController.swift */,
 				37BCBFD61BE0FA84002668B3 /* TripTableViewCell.swift */,
 				37BCBFD31BE0F4EF002668B3 /* Trip.swift */,
+=======
+				372DC0E81BD6B07800D67933 /* ViewController.swift */,
+				372DC0EA1BD6B07800D67933 /* Main.storyboard */,
+>>>>>>> ae315da1eea81304621303fd43898d5129cecfbf
 				372DC0ED1BD6B07800D67933 /* Assets.xcassets */,
 				372DC0EF1BD6B07800D67933 /* LaunchScreen.storyboard */,
 				372DC0F21BD6B07800D67933 /* Info.plist */,
@@ -206,10 +225,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				37BCBFD91BE0FCAE002668B3 /* TripTableViewController.swift in Sources */,
 				37BCBFD71BE0FA84002668B3 /* TripTableViewCell.swift in Sources */,
 				37BCBFD41BE0F4EF002668B3 /* Trip.swift in Sources */,
 				372DC0E91BD6B07800D67933 /* TripViewController.swift in Sources */,
+=======
+				372DC0E91BD6B07800D67933 /* ViewController.swift in Sources */,
+>>>>>>> ae315da1eea81304621303fd43898d5129cecfbf
 				372DC0E71BD6B07800D67933 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -218,7 +241,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
 				37BCBFD51BE0F4EF002668B3 /* Trip.swift in Sources */,
+=======
+>>>>>>> ae315da1eea81304621303fd43898d5129cecfbf
 				372DC0FC1BD6B07900D67933 /* TripTrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,7 +427,10 @@
 				372DC1021BD6B07900D67933 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+<<<<<<< HEAD
 			defaultConfigurationName = Release;
+=======
+>>>>>>> ae315da1eea81304621303fd43898d5129cecfbf
 		};
 		372DC1031BD6B07900D67933 /* Build configuration list for PBXNativeTarget "TripTrackerTests" */ = {
 			isa = XCConfigurationList;
@@ -410,7 +439,10 @@
 				372DC1051BD6B07900D67933 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+<<<<<<< HEAD
 			defaultConfigurationName = Release;
+=======
+>>>>>>> ae315da1eea81304621303fd43898d5129cecfbf
 		};
 /* End XCConfigurationList section */
 	};
