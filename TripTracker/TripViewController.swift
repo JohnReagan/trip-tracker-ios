@@ -8,11 +8,14 @@
 
 import UIKit
 import MapKit
+import CoreData
 
 
 class TripViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Properties
+    
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -62,13 +65,28 @@ class TripViewController: UIViewController, UITextFieldDelegate {
         if saveButton === sender {
             let name = nameTextField.text ?? ""
 
-            trip = 
+            createNewTrip(name)
         }
     }
     
     // MARK: Actions
-
     
+//    @IBAction func 
+
+    func createNewTrip(name: String) -> Bool {
+        let newTrip = NSEntityDescription.insertNewObjectForEntityForName("Trip", inManagedObjectContext: managedObjectContext) as! TripTracker.Trip
+        
+        (newTrip.name) = name
+        
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print("Failed to save the trip: Error = \(error)")
+        }
+        
+        return false
+        
+    }
     
 }
 

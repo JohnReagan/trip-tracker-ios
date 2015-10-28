@@ -16,12 +16,12 @@ import CoreData
     @NSManaged var name: String
 
     // MARK: Initialization
-    init?(name: String) {
-        super.init()
-        self.name = name
-        
-        if name.isEmpty {
-            return nil
-        }
-    }
+//    init?(name: String) {
+//        super.init()
+//        self.name = name
+//        
+//        if name.isEmpty {
+//            return nil
+//        }
+//    }
 }

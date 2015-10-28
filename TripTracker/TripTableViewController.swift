@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class TripTableViewController: UITableViewController {
     
@@ -49,7 +50,7 @@ class TripTableViewController: UITableViewController {
         // fetches appropriate meal for data source layout
         let trip = trips[indexPath.row]
 
-        cell!.nameLabel!.text = trip.valueForKey("name") as? String
+        cell.nameLabel!.text = trip.valueForKey("name") as? String
 
         return cell
     }
@@ -101,27 +102,42 @@ class TripTableViewController: UITableViewController {
     */
     
     @IBAction func unwindToTripList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.sourceViewController as? TripViewController, trip = sourceViewController.trip {
+        if let sourceViewController = sender.sourceViewController as? TripViewController {
             //add new trip
-            let newIndexPath = NSIndexPath(forRow: trips.count, inSection: 0)
+//            let newIndexPath = NSIndexPath(forRow: trips.count, inSection: 0)
             
-            trips.append(trip)
-            self.saveName(
+//            trips.append(trip)
+//            self.saveName(
             
             // inserted row slides in at bottom
-            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+//            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
         }
     }
     
-    @IBAction func addTrip(sender: UIStoryboardSegue) {
-        if let soucrce
-        let saveAction = UIAlertAction(title: "Save",
-            style: .Default,
-            handler: { (action:UIAlertAction) -> Void in
-                
-                let textField = alert.textFields!.first
-                self.saveName(textField!.text!)
-                self.tableView.reloadData()
-        })    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest(entityName: "Trip")
+        
+        do {
+            let results = try managedContext.executeFetchRequest(fetchRequest)
+            trips = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        } 
+        
+//        let newIndexPath = NSIndexPath(forRow: trips.count, inSection: 0)
+//        
+//
+//        
+////         inserted row slides in at bottom
+//                    tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
+
+    }
 
 }
