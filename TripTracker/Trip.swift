@@ -7,30 +7,20 @@
 //
 
 import UIKit
+import Foundation
+import CoreData
 
-class Trip {
+@objc(Trip) class Trip: NSManagedObject {
     
     // MARK: Properties
-    
-    
-    var name: String
-    
-    var rating: Int
-    
-    var x: Float80
-    
-    var y: Float80
-    
+    @NSManaged var name: String
+
     // MARK: Initialization
-    
-    
-    init?(name: String, rating: Int, x: Float80, y: Float80) {
+    init?(name: String) {
+        super.init()
         self.name = name
-        self.rating = rating
-        self.x = x
-        self.y = y
         
-        if name.isEmpty || rating < 0 {
+        if name.isEmpty {
             return nil
         }
     }

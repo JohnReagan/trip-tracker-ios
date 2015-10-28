@@ -12,7 +12,8 @@ class TripTableViewController: UITableViewController {
     
     // MARK: Properties
     
-    var trips = [Trip]()
+    //var trips = [Trip]()
+    var trips = [NSManagedObject]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +24,7 @@ class TripTableViewController: UITableViewController {
     }
     
     func loadSampleTrips() {
-        let trip1 = Trip(name: "A walkabout", rating: 5, x: 0, y: 0)!
         
-        let trip2 = Trip(name: "There and back again", rating: 4, x: 0, y: 0)!
-        
-        let trip3 = Trip(name: "Test", rating: 1, x: 0, y: 0)!
-        
-        trips += [trip1, trip2, trip3]
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,8 +49,7 @@ class TripTableViewController: UITableViewController {
         // fetches appropriate meal for data source layout
         let trip = trips[indexPath.row]
 
-        cell.nameLabel.text = trip.name
-        cell.ratingLabel.text = String(trip.rating)
+        cell!.nameLabel!.text = trip.valueForKey("name") as? String
 
         return cell
     }
@@ -112,10 +106,22 @@ class TripTableViewController: UITableViewController {
             let newIndexPath = NSIndexPath(forRow: trips.count, inSection: 0)
             
             trips.append(trip)
+            self.saveName(
             
             // inserted row slides in at bottom
             tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
         }
     }
+    
+    @IBAction func addTrip(sender: UIStoryboardSegue) {
+        if let soucrce
+        let saveAction = UIAlertAction(title: "Save",
+            style: .Default,
+            handler: { (action:UIAlertAction) -> Void in
+                
+                let textField = alert.textFields!.first
+                self.saveName(textField!.text!)
+                self.tableView.reloadData()
+        })    }
 
 }

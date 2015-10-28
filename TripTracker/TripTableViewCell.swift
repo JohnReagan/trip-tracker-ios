@@ -12,7 +12,6 @@ class TripTableViewCell: UITableViewCell {
     
     // MARK: Properties
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var ratingLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

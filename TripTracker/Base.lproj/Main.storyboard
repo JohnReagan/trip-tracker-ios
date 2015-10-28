@@ -24,13 +24,13 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZp-QJ-9IZ">
                                             <rect key="frame" x="8" y="8" width="584" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q38-NH-kCa">
                                             <rect key="frame" x="8" y="34" width="282" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -86,7 +86,7 @@
                                     <constraint firstItem="3DX-jQ-1M3" firstAttribute="leading" secondItem="bLh-60-BbG" secondAttribute="leading" id="uqK-FU-iBy"/>
                                 </constraints>
                             </stackView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PcE-5a-xhG">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PcE-5a-xhG">
                                 <rect key="frame" x="20" y="197" width="560" height="312"/>
                             </mapView>
                         </subviews>
@@ -96,11 +96,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="bLh-60-BbG" secondAttribute="trailing" id="7Aa-aO-mGv"/>
                             <constraint firstItem="PcE-5a-xhG" firstAttribute="top" secondItem="bLh-60-BbG" secondAttribute="bottom" constant="87" id="Cwm-c0-MUH"/>
                             <constraint firstItem="bLh-60-BbG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="bVk-kl-zuI"/>
-
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PcE-5a-xhG" secondAttribute="bottom" constant="91" id="bdF-Ss-Ny1"/>
-			</constraints>
+                        </constraints>
                     </view>
-
                     <navigationItem key="navigationItem" title="New Trip" id="vIO-QQ-xQg">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="XaT-IB-05W">
                             <connections>

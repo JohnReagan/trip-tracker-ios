@@ -61,10 +61,8 @@ class TripViewController: UIViewController, UITextFieldDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveButton === sender {
             let name = nameTextField.text ?? ""
-            let rating = 0
-            let x = Float80(0)
-            let y = Float80(0)
-            trip = Trip(name: name, rating: rating, x: x, y: y)
+
+            trip = 
         }
     }
     
