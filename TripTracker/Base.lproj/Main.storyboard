@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vKE-Wa-Lti">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
@@ -99,6 +98,7 @@
                             <constraint firstItem="bLh-60-BbG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="bVk-kl-zuI"/>
 
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PcE-5a-xhG" secondAttribute="bottom" constant="91" id="bdF-Ss-Ny1"/>
+			</constraints>
                     </view>
 
                     <navigationItem key="navigationItem" title="New Trip" id="vIO-QQ-xQg">
