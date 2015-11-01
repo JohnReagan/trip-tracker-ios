@@ -14,6 +14,8 @@ import CoreData
     
     // MARK: Properties
     @NSManaged var name: String
+    @NSManaged var desc: String
+    @NSManaged var id: Int 
 
     // MARK: Initialization
 //    init?(name: String) {
