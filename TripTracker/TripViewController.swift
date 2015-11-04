@@ -16,12 +16,12 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
     // MARK: Properties
     
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-    var locationManager: CLLocationManager?
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    var locationManager : CLLocationManager!
     var trip: Trip?
     
     override func viewDidLoad() {
@@ -30,6 +30,19 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
         nameTextField.delegate = self
         
         checkValidTripName()
+        
+        locationManager = CLLocationManager()
+        
+        self.locationManager!.requestAlwaysAuthorization()
+        
+        self.locationManager!.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     // MARK: UITextFieldDelegate
@@ -77,11 +90,14 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
         
         let newLocation = locations[0]
         let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: self.mapView.userLocation.coordinate.latitude, longitude: self.mapView.userLocation.coordinate.longitude)
+        annotation.coordinate = CLLocationCoordinate2D(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
         self.mapView.addAnnotation(annotation)
-        
+//        var locValue:CLLocationCoordinate2D = manager.location!.coordinate
         print("Latitude = \(newLocation.coordinate.latitude)")
         print("Longitude = \(newLocation.coordinate.longitude)")
+        for index in locations {
+            print("index = \(index)")
+        }
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
@@ -105,16 +121,16 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
         }
     }
     
-    func createLocationManager(startImmediately startImmediately: Bool){
-        locationManager = CLLocationManager()
-        if let manager = locationManager{
-            print("Successfully created the location manager")
-            manager.delegate = self
-            if startImmediately{
-                manager.startUpdatingLocation()
-            }
-        }
-    }
+//    func createLocationManager(startImmediately startImmediately: Bool){
+//        locationManager = CLLocationManager()
+//        if let manager = locationManager{
+//            print("Successfully created the location manager")
+//            manager.delegate = self
+//            if startImmediately{
+//                manager.startUpdatingLocation()
+//            }
+//        }
+//    }
     func displayAlertWithTitle(title: String, message: String){
         let controller = UIAlertController(title: title,
             message: message,
@@ -130,41 +146,41 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        /* Are location services available on this device? */
-        if CLLocationManager.locationServicesEnabled(){
-            
-            /* Do we have authorization to access location services? */
-            switch CLLocationManager.authorizationStatus(){
-            case .AuthorizedAlways:
-                /* Yes, always */
-                createLocationManager(startImmediately: true)
-            case .AuthorizedWhenInUse:
-                /* Yes, only when our app is in use */
-                createLocationManager(startImmediately: true)
-            case .Denied:
-                /* No */
-                displayAlertWithTitle("Not Determined",
-                    message: "Location services are not allowed for this app")
-            case .NotDetermined:
-                /* We don't know yet, we have to ask */
-                createLocationManager(startImmediately: false)
-                if let manager = self.locationManager{
-                    manager.requestWhenInUseAuthorization()
-                }
-            case .Restricted:
-                /* Restrictions have been applied, we have no access
-                to location services */
-                displayAlertWithTitle("Restricted",
-                    message: "Location services are not allowed for this app")
-            }
-            
-            
-        } else {
-            /* Location services are not enabled.
-            Take appropriate action: for instance, prompt the
-            user to enable the location services */
-            print("Location services are not enabled")
-        }
+//        /* Are location services available on this device? */
+//        if CLLocationManager.locationServicesEnabled(){
+//            
+//            /* Do we have authorization to access location services? */
+//            switch CLLocationManager.authorizationStatus(){
+//            case .AuthorizedAlways:
+//                /* Yes, always */
+//                createLocationManager(startImmediately: true)
+//            case .AuthorizedWhenInUse:
+//                /* Yes, only when our app is in use */
+//                createLocationManager(startImmediately: true)
+//            case .Denied:
+//                /* No */
+//                displayAlertWithTitle("Not Determined",
+//                    message: "Location services are not allowed for this app")
+//            case .NotDetermined:
+//                /* We don't know yet, we have to ask */
+//                createLocationManager(startImmediately: false)
+//                if let manager = self.locationManager{
+//                    manager.requestWhenInUseAuthorization()
+//                }
+//            case .Restricted:
+//                /* Restrictions have been applied, we have no access
+//                to location services */
+//                displayAlertWithTitle("Restricted",
+//                    message: "Location services are not allowed for this app")
+//            }
+//            
+//            
+//        } else {
+//            /* Location services are not enabled.
+//            Take appropriate action: for instance, prompt the
+//            user to enable the location services */
+//            print("Location services are not enabled")
+//        }
     }
     
     // MARK: Actions
