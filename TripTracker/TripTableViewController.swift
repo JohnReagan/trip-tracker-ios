@@ -49,8 +49,11 @@ class TripTableViewController: UITableViewController {
         
         // fetches appropriate meal for data source layout
         let trip = trips[indexPath.row]
+        let count = (trip.valueForKey("points") as! NSSet).count
+        //let count = trip.points.count as! String
+        let myLabel = trip.valueForKey("name")  as! String + ", count: " + String(count)
 
-        cell.nameLabel!.text = trip.valueForKey("name") as? String
+        cell.nameLabel!.text = myLabel
 
         return cell
     }
@@ -91,15 +94,22 @@ class TripTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ShowTrip" {
+            if let destination = segue.destinationViewController as? ShowTripController {
+                if let tripIndex = tableView.indexPathForSelectedRow?.row {
+                    destination.trip = trips[tripIndex] as! Trip
+                }
+            }
+        }
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
     
     @IBAction func unwindToTripList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? TripViewController {

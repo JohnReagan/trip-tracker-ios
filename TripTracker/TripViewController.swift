@@ -20,6 +20,7 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     var locs: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
+    var tracking = false
     
     
     
@@ -92,9 +93,8 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
         let newLocation = locations[0]
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
-        self.mapView.addAnnotation(annotation)
 //        var locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        locs.append(annotation.coordinate)
+        locs.append(newLocation.coordinate)
         var polyline = MKPolyline(coordinates: &locs, count: locs.count)
         mapView.addOverlay(polyline)
     }
@@ -195,13 +195,30 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
 
     func createNewTrip(name: String) -> Bool {
         let newTrip = NSEntityDescription.insertNewObjectForEntityForName("Trip", inManagedObjectContext: managedObjectContext) as! TripTracker.Trip
-        
         (newTrip.name) = name
+        var didSave = false
         
         do {
             try managedObjectContext.save()
+            didSave = true
         } catch let error as NSError {
             print("Failed to save the trip: Error = \(error)")
+        }
+        if (didSave) {
+            var points = [Point]()
+            for index in locs {
+                let newPoint = NSEntityDescription.insertNewObjectForEntityForName("Point", inManagedObjectContext: managedObjectContext) as! TripTracker.Point
+                newPoint.lat = index.latitude
+                newPoint.long = index.longitude
+                newPoint.trip = newTrip
+                do {
+                    try managedObjectContext.save()
+                    points.append(newPoint)
+                } catch let error as NSError {
+                    print ("failed to save point: Error = \(error)")
+                }
+            }
+            newTrip.points = NSSet(array: points)
         }
         
         return false

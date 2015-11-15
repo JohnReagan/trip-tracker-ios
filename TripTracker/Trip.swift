@@ -15,7 +15,7 @@ import CoreData
     // MARK: Properties
     @NSManaged var name: String
     @NSManaged var desc: String
-    @NSManaged var id: Int 
+    @NSManaged var points: NSSet
 
     // MARK: Initialization
 //    init?(name: String) {

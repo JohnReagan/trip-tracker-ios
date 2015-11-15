@@ -16,5 +16,5 @@ import CoreData
     // MARK: Properties
     @NSManaged var lat: Double
     @NSManaged var long: Double
-    @NSManaged var trip_id: Int
+    @NSManaged var trip: Trip
 }

@@ -31,6 +31,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="dZp-QJ-9IZ" id="rsp-kQ-V1Q"/>
+                                    <segue destination="T71-jN-ESa" kind="presentation" identifier="ShowTrip" id="qPR-iC-bW3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -49,7 +50,40 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o36-SQ-GOs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="267" y="21"/>
+            <point key="canvasLocation" x="238" y="-75"/>
+        </scene>
+        <!--Show Trip Controller-->
+        <scene sceneID="d93-aO-Avs">
+            <objects>
+                <viewController id="T71-jN-ESa" customClass="ShowTripController" customModule="TripTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="g2H-bk-awk"/>
+                        <viewControllerLayoutGuide type="bottom" id="LIn-NB-QZl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eaa-aM-Utb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Xqn-lg-y2n">
+                                <rect key="frame" x="87" y="196" width="426" height="309"/>
+                            </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fO-GE-7Ai">
+                                <rect key="frame" x="279" y="41" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="label" destination="8fO-GE-7Ai" id="ajG-FA-CvZ"/>
+                        <outlet property="mapView" destination="Xqn-lg-y2n" id="77U-Wv-zdB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YmH-pp-BiF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="668" y="687"/>
         </scene>
         <!--New Trip-->
         <scene sceneID="tne-QT-ifu">

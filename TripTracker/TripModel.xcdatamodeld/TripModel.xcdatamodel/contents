@@ -3,16 +3,15 @@
     <entity name="Point" representedClassName="Point" syncable="YES">
         <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="long" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="trip_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="trip_point" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" syncable="YES"/>
+        <relationship name="trip" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="points" inverseEntity="Trip" syncable="YES"/>
     </entity>
     <entity name="Trip" representedClassName="Trip" syncable="YES">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="points" toMany="YES" deletionRule="Nullify" destinationEntity="Point" inverseName="trip" inverseEntity="Point" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Point" positionX="-63" positionY="-9" width="128" height="105"/>
-        <element name="Trip" positionX="-63" positionY="-18" width="128" height="90"/>
+        <element name="Point" positionX="-90" positionY="27" width="128" height="88"/>
+        <element name="Trip" positionX="-335" positionY="-117" width="128" height="88"/>
     </elements>
 </model>
