@@ -11,15 +11,17 @@ import MapKit
 import CoreData
 import CoreLocation
 
-class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate {
+class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
     
     // MARK: Properties
-    
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    var locs: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
+    
+    
     
     var locationManager : CLLocationManager!
     var trip: Trip?
@@ -28,9 +30,8 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
         super.viewDidLoad()
         
         nameTextField.delegate = self
-        
+        mapView.delegate = self
         checkValidTripName()
-        
         locationManager = CLLocationManager()
         
         self.locationManager!.requestAlwaysAuthorization()
@@ -93,15 +94,13 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
         annotation.coordinate = CLLocationCoordinate2D(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
         self.mapView.addAnnotation(annotation)
 //        var locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        print("Latitude = \(newLocation.coordinate.latitude)")
-        print("Longitude = \(newLocation.coordinate.longitude)")
-        for index in locations {
-            print("index = \(index)")
-        }
+        locs.append(annotation.coordinate)
+        var polyline = MKPolyline(coordinates: &locs, count: locs.count)
+        mapView.addOverlay(polyline)
     }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("Error Bitch")
+        print("Error")
     }
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
@@ -207,6 +206,17 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
         
         return false
         
+    }
+    
+    // MARK: mapView delegate methods
+    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        if overlay is MKPolyline {
+            var polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            polylineRenderer.strokeColor = UIColor.blueColor()
+            polylineRenderer.lineWidth = 5
+            return polylineRenderer
+        }
+        return nil
     }
     
 }
