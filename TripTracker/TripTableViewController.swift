@@ -49,7 +49,14 @@ class TripTableViewController: UITableViewController {
         
         // fetches appropriate meal for data source layout
         let trip = trips[indexPath.row]
+//        do {
+//            let annos = try trip.valueForKey("annotations")
+//            annCount = (annos as! NSSet).count
+//        } catch let exception as NSException {
+//            print("No annotations for trip")
+//        }
         let count = (trip.valueForKey("points") as! NSSet).count
+//        let annCount = (trip.valueForKey("annotations") as! NSSet).count
         //let count = trip.points.count as! String
         let myLabel = trip.valueForKey("name")  as! String + ", count: " + String(count)
 

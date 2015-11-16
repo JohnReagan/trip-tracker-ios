@@ -21,7 +21,7 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
     @IBOutlet weak var saveButton: UIBarButtonItem!
     var locs: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
     var tracking = false
-    
+    var annos: [MKAnnotation] = [MKAnnotation]()
     
     
     var locationManager : CLLocationManager!
@@ -93,6 +93,7 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
         let newLocation = locations[0]
         let annotation = MKPointAnnotation()
         annotation.coordinate = CLLocationCoordinate2D(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
+        
 //        var locValue:CLLocationCoordinate2D = manager.location!.coordinate
         locs.append(newLocation.coordinate)
         var polyline = MKPolyline(coordinates: &locs, count: locs.count)
@@ -192,7 +193,25 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
     @IBAction func stopTracking(sender: UIButton) {
         locationManager?.stopUpdatingLocation()
     }*/
-
+    
+//    @IBAction func addAnnotation(sender: UIButton) {
+//        var recentPoint = locs.last
+//        let annotation = MKPointAnnotation()
+//        annotation.coordinate = CLLocationCoordinate2D(latitude: recentPoint!.latitude, longitude: recentPoint!.longitude)
+//        annotation.title = "Test"
+//        annotation.subtitle = "test subtitle"
+////        let annotation = NSEntityDescription.insertNewObjectForEntityForName("Annotation", inManagedObjectContext: managedObjectContext) as! TripTracker.Annotation
+////        annotation.lat = recentPoint!.latitude
+////        annotation.long = recentPoint!.longitude
+////        annotation.title = "Test title"
+////        annotation.desc = "Test desc"
+//        annos.append(annotation)
+//        mapView.addAnnotation(annotation)
+//    }
+    
+    @IBAction func takePicture(sender: UIButton) {
+    }
+    
     func createNewTrip(name: String) -> Bool {
         let newTrip = NSEntityDescription.insertNewObjectForEntityForName("Trip", inManagedObjectContext: managedObjectContext) as! TripTracker.Trip
         (newTrip.name) = name
@@ -206,6 +225,7 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
         }
         if (didSave) {
             var points = [Point]()
+            //var annotations = [Annotation]()
             for index in locs {
                 let newPoint = NSEntityDescription.insertNewObjectForEntityForName("Point", inManagedObjectContext: managedObjectContext) as! TripTracker.Point
                 newPoint.lat = index.latitude
@@ -218,7 +238,22 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
                     print ("failed to save point: Error = \(error)")
                 }
             }
+//            for ann in annos {
+//                let annotation = NSEntityDescription.insertNewObjectForEntityForName("Annotation", inManagedObjectContext: managedObjectContext) as! TripTracker.Annotation
+//                annotation.trip = newTrip
+//                annotation.title = ann.title!!
+//                annotation.subtitle = ann.subtitle!!
+//                annotation.lat = ann.coordinate.latitude
+//                annotation.long = ann.coordinate.longitude
+//                do {
+//                    try managedObjectContext.save()
+//                    annotations.append(annotation)
+//                } catch let error as NSError {
+//                    print ("failed to save annotation: Error = \(error)")
+//                }
+//            }
             newTrip.points = NSSet(array: points)
+            //newTrip.annotations = NSSet(array: annotations)
         }
         
         return false

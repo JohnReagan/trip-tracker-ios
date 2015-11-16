@@ -102,28 +102,33 @@
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="560" placeholderIntrinsicHeight="30" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter trip name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3DX-jQ-1M3">
                                         <rect key="frame" x="0.0" y="0.0" width="560" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="560" id="0dn-xe-sW2"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                     </textField>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="3DX-jQ-1M3" secondAttribute="trailing" id="YpW-7S-wTK"/>
-                                    <constraint firstAttribute="trailing" secondItem="3DX-jQ-1M3" secondAttribute="trailing" id="bLS-gY-AFe"/>
-                                    <constraint firstItem="3DX-jQ-1M3" firstAttribute="leading" secondItem="bLh-60-BbG" secondAttribute="leading" id="pTP-Jh-Zaq"/>
-                                    <constraint firstItem="3DX-jQ-1M3" firstAttribute="leading" secondItem="bLh-60-BbG" secondAttribute="leading" id="uqK-FU-iBy"/>
-                                </constraints>
                             </stackView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PcE-5a-xhG">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PcE-5a-xhG">
                                 <rect key="frame" x="20" y="144" width="560" height="312"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jxp-Lv-9u5">
+                                <rect key="frame" x="258" y="498" width="85" height="30"/>
+                                <state key="normal" title="Take Picture"/>
+                                <connections>
+                                    <action selector="takePicture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sJw-zj-3xZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bLh-60-BbG" firstAttribute="leading" secondItem="PcE-5a-xhG" secondAttribute="leading" id="0ch-DO-fme"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PcE-5a-xhG" secondAttribute="trailing" id="1Qq-R2-kwv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="bLh-60-BbG" secondAttribute="trailing" id="7Aa-aO-mGv"/>
-                            <constraint firstItem="PcE-5a-xhG" firstAttribute="top" secondItem="bLh-60-BbG" secondAttribute="bottom" constant="87" id="Cwm-c0-MUH"/>
-                            <constraint firstItem="bLh-60-BbG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="bVk-kl-zuI"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PcE-5a-xhG" secondAttribute="bottom" constant="100" id="eGY-MP-zVh"/>
+                            <constraint firstItem="bLh-60-BbG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="16" id="6MG-SP-USs"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PcE-5a-xhG" secondAttribute="bottom" constant="144" id="eGY-MP-zVh"/>
+                            <constraint firstItem="PcE-5a-xhG" firstAttribute="top" secondItem="bLh-60-BbG" secondAttribute="bottom" constant="34" id="iAH-R4-2xu"/>
+                            <constraint firstItem="bLh-60-BbG" firstAttribute="trailing" secondItem="PcE-5a-xhG" secondAttribute="trailing" id="wYy-BG-myQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Trip" id="vIO-QQ-xQg">

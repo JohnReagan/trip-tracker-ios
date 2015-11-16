@@ -16,6 +16,8 @@ import CoreData
     @NSManaged var name: String
     @NSManaged var desc: String
     @NSManaged var points: NSSet
+    //@NSManaged var annotations: NSSet?
+    @NSManaged var picture: NSData
 
     // MARK: Initialization
 //    init?(name: String) {

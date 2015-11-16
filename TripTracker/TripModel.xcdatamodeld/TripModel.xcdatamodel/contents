@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="14F1021" minimumToolsVersion="Xcode 7.0">
+    <entity name="Annotation" representedClassName="Annotation" syncable="YES">
+        <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="long" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="picture" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="subtitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Point" representedClassName="Point" syncable="YES">
         <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="long" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -8,10 +15,12 @@
     <entity name="Trip" representedClassName="Trip" syncable="YES">
         <attribute name="desc" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picture" optional="YES" attributeType="Binary" syncable="YES"/>
         <relationship name="points" toMany="YES" deletionRule="Nullify" destinationEntity="Point" inverseName="trip" inverseEntity="Point" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Point" positionX="-90" positionY="27" width="128" height="88"/>
-        <element name="Trip" positionX="-335" positionY="-117" width="128" height="88"/>
+        <element name="Point" positionX="-90" positionY="27" width="128" height="90"/>
+        <element name="Trip" positionX="-335" positionY="-117" width="128" height="105"/>
+        <element name="Annotation" positionX="-216" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

@@ -19,6 +19,7 @@
 		37BCBFD51BE0F4EF002668B3 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BCBFD31BE0F4EF002668B3 /* Trip.swift */; };
 		37BCBFD71BE0FA84002668B3 /* TripTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BCBFD61BE0FA84002668B3 /* TripTableViewCell.swift */; };
 		37BCBFD91BE0FCAE002668B3 /* TripTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BCBFD81BE0FCAE002668B3 /* TripTableViewController.swift */; };
+		37FF47F71BFA835700D77C49 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FF47F61BFA835700D77C49 /* Annotation.swift */; };
 		7E03D5FC1BE13948000701EF /* TripModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7E03D5FA1BE13948000701EF /* TripModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +49,7 @@
 		37BCBFD31BE0F4EF002668B3 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		37BCBFD61BE0FA84002668B3 /* TripTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableViewCell.swift; sourceTree = "<group>"; };
 		37BCBFD81BE0FCAE002668B3 /* TripTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableViewController.swift; sourceTree = "<group>"; };
+		37FF47F61BFA835700D77C49 /* Annotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Annotation.swift; path = ../Annotation.swift; sourceTree = "<group>"; };
 		7E03D5FB1BE13948000701EF /* TripModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TripModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				372DC0E61BD6B07800D67933 /* AppDelegate.swift */,
+				37FF47F61BFA835700D77C49 /* Annotation.swift */,
 				7E03D5FA1BE13948000701EF /* TripModel.xcdatamodeld */,
 				372DC0E81BD6B07800D67933 /* TripViewController.swift */,
 				372DC0EA1BD6B07800D67933 /* Main.storyboard */,
@@ -223,6 +226,7 @@
 				3735ECFA1BE6A1640030A302 /* Point.swift in Sources */,
 				372DC0E71BD6B07800D67933 /* AppDelegate.swift in Sources */,
 				7E03D5FC1BE13948000701EF /* TripModel.xcdatamodeld in Sources */,
+				37FF47F71BFA835700D77C49 /* Annotation.swift in Sources */,
 				3783F3B11BF9441700A09E65 /* ShowTripController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
