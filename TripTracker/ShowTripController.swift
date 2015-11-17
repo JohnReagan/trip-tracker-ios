@@ -16,6 +16,7 @@ class ShowTripController: UIViewController, UITextFieldDelegate, CLLocationManag
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var label: UILabel!
+    
     var locationManager : CLLocationManager!
     var trip: Trip!
     var annotation: MKPointAnnotation = MKPointAnnotation()
@@ -25,6 +26,8 @@ class ShowTripController: UIViewController, UITextFieldDelegate, CLLocationManag
         mapView.delegate = self
         imageView.image = UIImage(data: trip.picture)
         label.text = trip.name
+        
+        // draw polyline of trip
         var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
         for point in trip.points {
             let newPoint = point as! Point
@@ -52,6 +55,7 @@ class ShowTripController: UIViewController, UITextFieldDelegate, CLLocationManag
             return
         }
         
+        // move pin as user location updates
         let newLocation = locations[0]
         mapView.removeAnnotation(annotation)
         annotation.coordinate = CLLocationCoordinate2D(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)

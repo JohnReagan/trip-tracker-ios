@@ -12,22 +12,9 @@ import CoreData
 class TripTableViewController: UITableViewController {
     
     // MARK: Properties
-    
-    //var trips = [Trip]()
     var trips = [NSManagedObject]()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // load sample data
-        
-        loadSampleTrips()
-    }
     
-    func loadSampleTrips() {
-        
-    }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -47,63 +34,19 @@ class TripTableViewController: UITableViewController {
         let cellIdentifier = "TripTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! TripTableViewCell
         
-        // fetches appropriate meal for data source layout
+        // fetches appropriate trip for data source layout
         let trip = trips[indexPath.row]
-//        do {
-//            let annos = try trip.valueForKey("annotations")
-//            annCount = (annos as! NSSet).count
-//        } catch let exception as NSException {
-//            print("No annotations for trip")
-//        }
-//        let annCount = (trip.valueForKey("annotations") as! NSSet).count
-        //let count = trip.points.count as! String
         let myLabel = trip.valueForKey("name")  as! String
         cell.nameLabel!.text = myLabel
         cell.thumbnail!.image = UIImage(data: trip.valueForKey("picture") as! NSData)
 
         return cell
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // pass trip from clicked cell to next scene
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowTrip" {
             let navVC = segue.destinationViewController as! UINavigationController
@@ -113,21 +56,11 @@ class TripTableViewController: UITableViewController {
                 }
             }
         }
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     
     
     @IBAction func unwindToTripList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.sourceViewController as? TripViewController {
-            //add new trip
-//            let newIndexPath = NSIndexPath(forRow: trips.count, inSection: 0)
-            
-//            trips.append(trip)
-//            self.saveName(
-            
-            // inserted row slides in at bottom
-//            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
         }
     }
     
@@ -141,6 +74,7 @@ class TripTableViewController: UITableViewController {
         
         let fetchRequest = NSFetchRequest(entityName: "Trip")
         
+        // get trip list from core data and add to table view
         do {
             let results = try managedContext.executeFetchRequest(fetchRequest)
             trips = results as! [NSManagedObject]
@@ -149,15 +83,6 @@ class TripTableViewController: UITableViewController {
             })
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
-        } 
-        
-//        let newIndexPath = NSIndexPath(forRow: trips.count, inSection: 0)
-//        
-//
-//        
-////         inserted row slides in at bottom
-//                    tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Bottom)
-
+        }
     }
-
 }

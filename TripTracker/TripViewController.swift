@@ -16,17 +16,15 @@ class TripViewController: UIViewController, UITextFieldDelegate, UINavigationCon
     // MARK: Properties
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     
-    var imagePicker: UIImagePickerController!
-    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    var imagePicker: UIImagePickerController!
     var locs: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
     var tracking = false
-    var annos: [MKAnnotation] = [MKAnnotation]()
     var isImage = false
-    
-    
     var locationManager : CLLocationManager!
     var trip: Trip?
     
@@ -80,7 +78,7 @@ class TripViewController: UIViewController, UITextFieldDelegate, UINavigationCon
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    //this method lets you configure a view controller before it's presented
+    // save trip and segue to table view
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if saveButton === sender {
             let name = nameTextField.text ?? ""
@@ -89,18 +87,17 @@ class TripViewController: UIViewController, UITextFieldDelegate, UINavigationCon
         }
     }
     
+    // MARK: Location Manager Methods
+    
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if locations.count == 0 {
             return
         }
         
+        // add new point to polyline and render
         let newLocation = locations[0]
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: newLocation.coordinate.latitude, longitude: newLocation.coordinate.longitude)
-        
-//        var locValue:CLLocationCoordinate2D = manager.location!.coordinate
         locs.append(newLocation.coordinate)
-        var polyline = MKPolyline(coordinates: &locs, count: locs.count)
+        let polyline = MKPolyline(coordinates: &locs, count: locs.count)
         mapView.addOverlay(polyline)
     }
     
@@ -126,20 +123,15 @@ class TripViewController: UIViewController, UITextFieldDelegate, UINavigationCon
     }
     
     
-    @IBOutlet weak var imageView: UIImageView!
+    // Mark: Image Methods
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
         imagePicker.dismissViewControllerAnimated(true, completion: nil)
         imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
         isImage = true
         checkValidTripName()
     }
+    
     func prepareImageForSaving(image: UIImage) -> NSData {
-//        guard let imageData = UIImageJPEGRepresentation(image, 1) else {
-//            // handle failed conversion
-//            print("jpg error")
-//            return nil
-//        }
-        
         // scale image
         let thumbnail = self.scale(image: image, toSize: self.view.frame.size)
         
@@ -149,9 +141,8 @@ class TripViewController: UIViewController, UITextFieldDelegate, UINavigationCon
             return NSData()
         }
         return thumbnailData
-        
-        
-        }
+    }
+    
     func scale(image image:UIImage, toSize newSize:CGSize) -> UIImage {
         
         // make sure the new size has the correct aspect ratio
@@ -164,6 +155,7 @@ class TripViewController: UIViewController, UITextFieldDelegate, UINavigationCon
         
         return newImage
     }
+    
     func resizeFill(fromSize: CGSize, toSize: CGSize) -> CGSize {
         
         let aspectOne = fromSize.height / fromSize.width
@@ -183,16 +175,7 @@ class TripViewController: UIViewController, UITextFieldDelegate, UINavigationCon
         
     }
     
-//    func createLocationManager(startImmediately startImmediately: Bool){
-//        locationManager = CLLocationManager()
-//        if let manager = locationManager{
-//            print("Successfully created the location manager")
-//            manager.delegate = self
-//            if startImmediately{
-//                manager.startUpdatingLocation()
-//            }
-//        }
-//    }
+
     func displayAlertWithTitle(title: String, message: String){
         let controller = UIAlertController(title: title,
             message: message,
@@ -205,73 +188,8 @@ class TripViewController: UIViewController, UITextFieldDelegate, UINavigationCon
         presentViewController(controller, animated: true, completion: nil)
         
     }
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        /* Are location services available on this device? */
-//        if CLLocationManager.locationServicesEnabled(){
-//            
-//            /* Do we have authorization to access location services? */
-//            switch CLLocationManager.authorizationStatus(){
-//            case .AuthorizedAlways:
-//                /* Yes, always */
-//                createLocationManager(startImmediately: true)
-//            case .AuthorizedWhenInUse:
-//                /* Yes, only when our app is in use */
-//                createLocationManager(startImmediately: true)
-//            case .Denied:
-//                /* No */
-//                displayAlertWithTitle("Not Determined",
-//                    message: "Location services are not allowed for this app")
-//            case .NotDetermined:
-//                /* We don't know yet, we have to ask */
-//                createLocationManager(startImmediately: false)
-//                if let manager = self.locationManager{
-//                    manager.requestWhenInUseAuthorization()
-//                }
-//            case .Restricted:
-//                /* Restrictions have been applied, we have no access
-//                to location services */
-//                displayAlertWithTitle("Restricted",
-//                    message: "Location services are not allowed for this app")
-//            }
-//            
-//            
-//        } else {
-//            /* Location services are not enabled.
-//            Take appropriate action: for instance, prompt the
-//            user to enable the location services */
-//            print("Location services are not enabled")
-//        }
-    }
     
     // MARK: Actions
-    
-//    @IBAction func
-    /*@IBAction func startTracking(sender: UIButton) {
-        locationManager?.startUpdatingLocation()
-    }
-    
-    @IBAction func stopTracking(sender: UIButton) {
-        locationManager?.stopUpdatingLocation()
-    }*/
-    
-//    @IBAction func addAnnotation(sender: UIButton) {
-//        var recentPoint = locs.last
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = CLLocationCoordinate2D(latitude: recentPoint!.latitude, longitude: recentPoint!.longitude)
-//        annotation.title = "Test"
-//        annotation.subtitle = "test subtitle"
-////        let annotation = NSEntityDescription.insertNewObjectForEntityForName("Annotation", inManagedObjectContext: managedObjectContext) as! TripTracker.Annotation
-////        annotation.lat = recentPoint!.latitude
-////        annotation.long = recentPoint!.longitude
-////        annotation.title = "Test title"
-////        annotation.desc = "Test desc"
-//        annos.append(annotation)
-//        mapView.addAnnotation(annotation)
-//    }
-    
-    
     @IBAction func takePicture(sender: UIButton) {
         imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -280,6 +198,7 @@ class TripViewController: UIViewController, UITextFieldDelegate, UINavigationCon
         presentViewController(imagePicker, animated: true, completion: nil)
     }
     
+    // saves trip to database
     func createNewTrip(name: String) -> Bool {
         let newTrip = NSEntityDescription.insertNewObjectForEntityForName("Trip", inManagedObjectContext: managedObjectContext) as! TripTracker.Trip
         (newTrip.name) = name
@@ -294,7 +213,6 @@ class TripViewController: UIViewController, UITextFieldDelegate, UINavigationCon
         }
         if (didSave) {
             var points = [Point]()
-            //var annotations = [Annotation]()
             for index in locs {
                 let newPoint = NSEntityDescription.insertNewObjectForEntityForName("Point", inManagedObjectContext: managedObjectContext) as! TripTracker.Point
                 newPoint.lat = index.latitude
@@ -307,32 +225,16 @@ class TripViewController: UIViewController, UITextFieldDelegate, UINavigationCon
                     print ("failed to save point: Error = \(error)")
                 }
             }
-//            for ann in annos {
-//                let annotation = NSEntityDescription.insertNewObjectForEntityForName("Annotation", inManagedObjectContext: managedObjectContext) as! TripTracker.Annotation
-//                annotation.trip = newTrip
-//                annotation.title = ann.title!!
-//                annotation.subtitle = ann.subtitle!!
-//                annotation.lat = ann.coordinate.latitude
-//                annotation.long = ann.coordinate.longitude
-//                do {
-//                    try managedObjectContext.save()
-//                    annotations.append(annotation)
-//                } catch let error as NSError {
-//                    print ("failed to save annotation: Error = \(error)")
-//                }
-//            }
+
             newTrip.points = NSSet(array: points)
-            //newTrip.annotations = NSSet(array: annotations)
         }
-        
         return false
-        
     }
     
     // MARK: mapView delegate methods
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
         if overlay is MKPolyline {
-            var polylineRenderer = MKPolylineRenderer(overlay: overlay)
+            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
             polylineRenderer.strokeColor = UIColor.blueColor()
             polylineRenderer.lineWidth = 5
             return polylineRenderer
