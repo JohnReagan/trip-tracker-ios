@@ -9,28 +9,44 @@
         <scene sceneID="C77-1Z-E2p">
             <objects>
                 <tableViewController id="i0m-Kh-oev" customClass="TripTableViewController" customModule="TripTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="gQ1-K0-2bZ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="117" sectionHeaderHeight="28" sectionFooterHeight="28" id="gQ1-K0-2bZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TripTableViewCell" rowHeight="90" id="iUx-SR-Ci0" customClass="TripTableViewCell" customModule="TripTracker" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="90"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TripTableViewCell" rowHeight="117" id="iUx-SR-Ci0" customClass="TripTableViewCell" customModule="TripTracker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="117"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iUx-SR-Ci0" id="Wil-gp-mxR">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="116"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZp-QJ-9IZ">
-                                            <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZp-QJ-9IZ">
+                                            <rect key="frame" x="116" y="47" width="42" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nnb-5Q-vC8">
+                                            <rect key="frame" x="8" y="8" width="100" height="100"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="100" id="gth-VU-6en"/>
+                                                <constraint firstAttribute="width" constant="100" id="vNh-vg-kD7"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Nnb-5Q-vC8" secondAttribute="bottom" id="4JO-RX-XqF"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Nnb-5Q-vC8" secondAttribute="bottom" id="6M9-yx-EoL"/>
+                                        <constraint firstItem="Nnb-5Q-vC8" firstAttribute="top" secondItem="Wil-gp-mxR" secondAttribute="topMargin" id="HrG-W4-6Dg"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Nnb-5Q-vC8" secondAttribute="bottom" id="Rax-fe-bxj"/>
+                                        <constraint firstItem="dZp-QJ-9IZ" firstAttribute="leading" secondItem="Nnb-5Q-vC8" secondAttribute="trailing" constant="10" id="dZw-t6-scU"/>
+                                        <constraint firstItem="Nnb-5Q-vC8" firstAttribute="leading" secondItem="Wil-gp-mxR" secondAttribute="leadingMargin" id="uvY-aZ-Ich"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="dZp-QJ-9IZ" id="rsp-kQ-V1Q"/>
+                                    <outlet property="thumbnail" destination="Nnb-5Q-vC8" id="bwL-0R-loc"/>
                                     <segue destination="X5H-r2-xky" kind="presentation" identifier="ShowTrip" id="qPR-iC-bW3"/>
                                 </connections>
                             </tableViewCell>
@@ -155,19 +171,12 @@
                                         <rect key="frame" x="0.0" y="415" width="560" height="105"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jxp-Lv-9u5">
-                                                <rect key="frame" x="0.0" y="38" width="460" height="30"/>
+                                                <rect key="frame" x="0.0" y="38" width="560" height="30"/>
                                                 <state key="normal" title="Take Picture"/>
                                                 <connections>
                                                     <action selector="takePicture:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sJw-zj-3xZ"/>
                                                 </connections>
                                             </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HIq-gv-esx">
-                                                <rect key="frame" x="460" y="3" width="100" height="100"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="NbX-EF-1Xc"/>
-                                                    <constraint firstAttribute="height" constant="100" id="ZSC-yN-qs1"/>
-                                                </constraints>
-                                            </imageView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -204,7 +213,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="imageView" destination="HIq-gv-esx" id="xhb-jb-bMZ"/>
                         <outlet property="mapView" destination="PcE-5a-xhG" id="hMS-SI-MD3"/>
                         <outlet property="nameTextField" destination="3DX-jQ-1M3" id="n5E-pz-9g9"/>
                         <outlet property="saveButton" destination="1ah-Xy-AQZ" id="O2A-1R-3QT"/>

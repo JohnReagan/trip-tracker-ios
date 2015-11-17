@@ -12,7 +12,7 @@ class TripTableViewCell: UITableViewCell {
     
     // MARK: Properties
     @IBOutlet weak var nameLabel: UILabel!
-
+    @IBOutlet weak var thumbnail: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

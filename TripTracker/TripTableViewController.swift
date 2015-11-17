@@ -55,12 +55,11 @@ class TripTableViewController: UITableViewController {
 //        } catch let exception as NSException {
 //            print("No annotations for trip")
 //        }
-        let count = (trip.valueForKey("points") as! NSSet).count
 //        let annCount = (trip.valueForKey("annotations") as! NSSet).count
         //let count = trip.points.count as! String
-        let myLabel = trip.valueForKey("name")  as! String + ", count: " + String(count)
-
+        let myLabel = trip.valueForKey("name")  as! String
         cell.nameLabel!.text = myLabel
+        cell.thumbnail!.image = UIImage(data: trip.valueForKey("picture") as! NSData)
 
         return cell
     }
