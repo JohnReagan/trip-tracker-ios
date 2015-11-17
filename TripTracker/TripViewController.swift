@@ -11,10 +11,12 @@ import MapKit
 import CoreData
 import CoreLocation
 
-class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManagerDelegate, MKMapViewDelegate {
+class TripViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate, MKMapViewDelegate, UIImagePickerControllerDelegate {
     
     // MARK: Properties
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    
+    var imagePicker: UIImagePickerController!
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -22,6 +24,7 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
     var locs: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
     var tracking = false
     var annos: [MKAnnotation] = [MKAnnotation]()
+    var isImage = false
     
     
     var locationManager : CLLocationManager!
@@ -56,7 +59,8 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
     
     func checkValidTripName() {
         let text = nameTextField.text ?? ""
-        saveButton.enabled = !text.isEmpty
+        saveButton.enabled = !text.isEmpty && isImage
+        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -119,6 +123,64 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
         case .Restricted:
             print("Restricted")
         }
+    }
+    
+    
+    @IBOutlet weak var imageView: UIImageView!
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
+        imagePicker.dismissViewControllerAnimated(true, completion: nil)
+        imageView.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        isImage = true
+        checkValidTripName()
+    }
+    func prepareImageForSaving(image: UIImage) -> NSData {
+//        guard let imageData = UIImageJPEGRepresentation(image, 1) else {
+//            // handle failed conversion
+//            print("jpg error")
+//            return nil
+//        }
+        
+        // scale image
+        let thumbnail = self.scale(image: image, toSize: self.view.frame.size)
+        
+        guard let thumbnailData  = UIImageJPEGRepresentation(thumbnail, 0.7) else {
+            // handle failed conversion
+            print("jpg error")
+            return NSData()
+        }
+        return thumbnailData
+        
+        
+        }
+    func scale(image image:UIImage, toSize newSize:CGSize) -> UIImage {
+        
+        // make sure the new size has the correct aspect ratio
+        let aspectFill = resizeFill(image.size, toSize: newSize)
+        
+        UIGraphicsBeginImageContextWithOptions(aspectFill, false, 0.0);
+        image.drawInRect(CGRectMake(0, 0, aspectFill.width, aspectFill.height))
+        let newImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+    func resizeFill(fromSize: CGSize, toSize: CGSize) -> CGSize {
+        
+        let aspectOne = fromSize.height / fromSize.width
+        let aspectTwo = toSize.height / toSize.width
+        
+        let scale : CGFloat
+        
+        if aspectOne < aspectTwo {
+            scale = fromSize.height / toSize.height
+        } else {
+            scale = fromSize.width / toSize.width
+        }
+        
+        let newHeight = fromSize.height / scale
+        let newWidth = fromSize.width / scale
+        return CGSize(width: newWidth, height: newHeight)
+        
     }
     
 //    func createLocationManager(startImmediately startImmediately: Bool){
@@ -209,12 +271,19 @@ class TripViewController: UIViewController, UITextFieldDelegate, CLLocationManag
 //        mapView.addAnnotation(annotation)
 //    }
     
+    
     @IBAction func takePicture(sender: UIButton) {
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .Camera
+        
+        presentViewController(imagePicker, animated: true, completion: nil)
     }
     
     func createNewTrip(name: String) -> Bool {
         let newTrip = NSEntityDescription.insertNewObjectForEntityForName("Trip", inManagedObjectContext: managedObjectContext) as! TripTracker.Trip
         (newTrip.name) = name
+        newTrip.picture = prepareImageForSaving(imageView.image!)
         var didSave = false
         
         do {

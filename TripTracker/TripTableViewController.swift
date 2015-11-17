@@ -107,7 +107,8 @@ class TripTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowTrip" {
-            if let destination = segue.destinationViewController as? ShowTripController {
+            let navVC = segue.destinationViewController as! UINavigationController
+            if let destination = navVC.viewControllers.first as? ShowTripController {
                 if let tripIndex = tableView.indexPathForSelectedRow?.row {
                     destination.trip = trips[tripIndex] as! Trip
                 }
